@@ -14,23 +14,23 @@ base_url = os.getenv('base_url')
 body = {"name": fake.name()}
 
 
-def create_goal():
+def create_folder():
+    body1 = {"name": fake.name()}
+    return requests.post(base_url + "space/90154821595/folder", json=body1, headers=headers), body1
 
-    return requests.post(base_url + "team/90131546371/goal", json=body, headers=headers)
+def get_folders():
 
-def get_goals():
+    return requests.get(base_url + "space/90154821595/folder", headers=headers)
 
-    return requests.get(base_url + "team/90131546371/goal", headers=headers)
+def get_folder(id):
 
-def get_goal(id):
+    return  requests.get(base_url + "folder/" + str(id), headers=headers)
 
-    return  requests.get(base_url + "goal/" + str(id), headers=headers)
+def delete_folder(id):
 
-def delete_goal(id):
-
-    return requests.delete(base_url + "goal/" + str(id), headers=headers)
+    return requests.delete(base_url + "folder/" + str(id), headers=headers)
 
 
-def update_goal(id, body):
+def update_folder(id, body):
 
-    return requests.put('https://api.clickup.com/api/v2/goal/' + str(id), json=body, headers=headers)
+    return requests.put(base_url + "folder/" + str(id), json=body, headers=headers)
